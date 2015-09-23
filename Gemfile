@@ -5,6 +5,12 @@ source "https://rubygems.org"
 ruby '2.2.1'
 gem 'sinatra'
 gem 'rerun'
+gem 'data_mapper'
+
+group :production do
+gem 'data_mapper'
+
+end
 
 group :development do
 
