@@ -9,9 +9,17 @@ gem 'rerun'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 
+group :production do
+gem 'data_mapper'
+
+end
+
+
 group :development do
   gem 'rspec'
-  gem 'capybara'  
+  gem 'capybara'
+
+
 end
 
 group :test do
