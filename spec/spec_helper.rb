@@ -1,11 +1,18 @@
+
+ENV['RACK_ENV'] = 'test'
+
+require File.join(File.dirname(__FILE__), '..', 'app/app.rb')
+
 require 'capybara/rspec'
 require './app/app'
+require 'rspec'
+require 'capybara'
 require 'database_cleaner'
 # require 'data_mapper_setup'
 
 ENV['RACK_ENV'] = 'test'
 
-# require File.join(File.dirname(__FILE__), '../..', 'app/app.rb')
+
 
 Capybara.app = BookmarkManager
 
@@ -44,7 +51,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-  
+
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
@@ -118,4 +126,5 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
 end
