@@ -1,7 +1,7 @@
 require 'data_mapper'
 # require 'spec_helper'
 
-env = ENV['RACK_ENV'] || 'development'
+env = ENV['RACK_ENV'] || 'test'
 
 DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{env}")
 

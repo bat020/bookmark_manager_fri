@@ -12,14 +12,15 @@ class BookmarkManager < Sinatra::Base
     erb :'links/index'
   end
 
-  get '/links/new' do
-    "hello world"
+  get '/new_link' do
     erb :'links/new_link'
   end
 
-  post '/links/new' do
-
+  post '/new_link' do
+    Link.create(:title => params[:title], :url => params[:url])
+    redirect('/links')
   end
+
 run! if app_file == $PROGRAM_NAME
 
 end
