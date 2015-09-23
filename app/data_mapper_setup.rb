@@ -11,4 +11,4 @@ DataMapper.setup(ENV['DATA_BASE'], "postgres://localhost/bookmark_manager_#{env}
 
 DataMapper.finalize
 
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
