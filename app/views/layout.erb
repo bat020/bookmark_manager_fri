@@ -12,12 +12,18 @@
   <body>
     <% if current_user %>
        Welcome, <%= current_user.email %>
-     <% else %>
-       <div id='email_notice'><%= flash[:email_notice] %></div>
+     <!-- <% elsif flash[:email_notice] %>
+      <div id='email_notice'><%= flash[:email_notice] %></div> -->
      <% end %>
 
-    <% if flash[:notice] %>
-      <div id='notice'><%= flash[:notice] %></div>
+    <% if flash[:errors] && !flash[:errors].empty? %>
+      Please correct the errors below:
+      <ul id='errors'>
+        <% flash[:errors].each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+      <div id='notice'><%= flash[:notice] %></div> -->
     <% end %>
     <%= yield %>
     <!-- Bootstrap jquery plugins -->
