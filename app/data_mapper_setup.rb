@@ -1,4 +1,5 @@
 require 'data_mapper'
+require 'dm-validations'
 require './app/models/tag'
 require './app/models/link'
 require './app/models/user'
