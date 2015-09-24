@@ -11,8 +11,11 @@
   </head>
   <body>
     <% if current_user %>
-     Welcome, <%= current_user.email %>
-    <% end %>
+       Welcome, <%= current_user.email %>
+     <% else %>
+       <div id='email_notice'><%= flash[:email_notice] %></div>
+     <% end %>
+
     <% if flash[:notice] %>
       <div id='notice'><%= flash[:notice] %></div>
     <% end %>
