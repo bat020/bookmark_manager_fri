@@ -20,14 +20,14 @@ feature 'User sign up' do
   #   expect(User.first.email).to eq(user.email)
   # end
   #
-  # def sign_up_as(user)
-  #     visit '/users/new'
-  #     expect(page.status_code).to eq(200)
-  #     fill_in :email, with: user.email
-  #     fill_in :password, with: user.password
-  #     fill_in :password_confirmation, with: user.password_confirmation
-  #     click_button 'Sign Up'
-  # end
+  def sign_up_as(user)
+      visit '/users/new'
+      expect(page.status_code).to eq(200)
+      fill_in :email, with: user.email
+      fill_in :password, with: user.password
+      fill_in :password_confirmation, with: user.password_confirmation
+      click_button 'Sign Up'
+  end
 
   scenario 'requires a matching comfirmation password' do
     expect { sign_up(password_confirmation: 'wrong') }.not_to change(User, :count)
@@ -44,15 +44,27 @@ feature 'User sign up' do
   end
 
   scenario 'with a password that does not match' do
-    expect { sign_up(password_confirmation: 'wrong') }.not_to change(User, :count)
-    expect(current_path).to eq('/users')
-    expect(page).to have_content 'Password and confirmation password do not match'
-  end
+     user = create :user
+     visit '/users/new'
+     fill_in :email, with: user.email
+     fill_in :password, with: user.password
+     fill_in :password_confirmation, with: 'wrong'
+     click_button 'Sign Up'
+     expect(page).to have_content 'Password and confirmation password do not match'
+   end
 
-  scenario 'requires an email to sign up' do
-    expect { sign_up(email: nil) }.not_to change(User, :count)
-    expect(current_path).to eq('/users')
-    expect(page).to have_content 'Please enter an email address'
+   scenario 'requires an email to sign up' do
+     user = create :user
+     visit '/users/new'
+     fill_in :email, with: nil
+     click_button 'Sign Up'
+     expect(page).to have_content 'Please enter an email address'
+   end
+
+  scenario 'I cannot sign up with an existing email' do
+    sign_up_as(user)
+    expect { sign_up_as(user) }.to change(User, :count).by(0)
+    expect(page).to have_content('Email is already taken')
   end
 
 
