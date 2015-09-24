@@ -1,14 +1,15 @@
-<h1> Add link </h1>
+<body class="container">
+  <h1> Add link </h1>
 
-  <form action="/new_link" method="post">
-  <input type="text" name="title"  required>
-  <input type="text" name="url"  required>
-  <input type="text" name="tag">
-  <input type="submit" value="Add Link">
+    <form action="/new_link" method="post">
+      <input type="text" name="title"  placeholder="title" required>
+      <input type="text" name="url"  placeholder="url" required>
+      <input type="text" name="tag" placeholder="tag">
+      <input type="submit" value="Add Link">
+    </form>
 
+    <form action="/links">
+      <button>Home</button>
+    </form>
 
-  </form>
-
-  <form action="/links">
-    <button>Home</button>
-  </form>
+</body>

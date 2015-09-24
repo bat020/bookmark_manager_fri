@@ -8,6 +8,7 @@ gem 'sinatra'
 gem 'rerun'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
+gem 'bcrypt'
 
 group :production do
 gem 'data_mapper'
