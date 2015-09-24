@@ -1,13 +1,5 @@
 require_relative '../factories/user'
 
-def sign_up(user)
-  visit '/users/new'
-  fill_in :email, with: user.email
-  fill_in :password, with: user.password
-  fill_in :password_confirmation, with: user.password_confirmation
-  click_button 'Sign Up'
-end
-
 feature 'User sign up' do
 
   scenario 'I can sign up as a new user' do
@@ -47,11 +39,16 @@ feature 'User sign in' do
     expect(page).to have_content "Welcome, #{user.email}"
   end
 
-  def sign_in(user)
-    visit '/sessions/new'
-    fill_in :email, with: user.email
-    fill_in :password, with: user.password
-    click_button 'Sign In'
+end
+
+feature 'User signs out' do
+
+  scenario 'while being signed in' do
+    user = create :user
+    sign_in(user)
+    click_button 'Sign Out'
+    expect(page).to have_content('Goodbye!')
+    expect(page).not_to have_content('Welcome, test@test.com')
   end
 
 end

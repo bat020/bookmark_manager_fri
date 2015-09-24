@@ -12,9 +12,17 @@
   <body>
     <% if current_user %>
        Welcome, <%= current_user.email %>
-     <!-- <% elsif flash[:email_notice] %>
-      <div id='email_notice'><%= flash[:email_notice] %></div> -->
+       <form method='post' action='/sessions'>
+         <input type='hidden' name='_method' value='delete'>
+         <input type='submit' value='Sign Out'>
+       </form>
      <% end %>
+
+    <% if flash[:notice] %>
+      <div id='notice'>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
 
     <% if flash[:errors] && !flash[:errors].empty? %>
       Please correct the errors below:
@@ -23,7 +31,7 @@
           <li><%= error %></li>
         <% end %>
       </ul>
-      <div id='notice'><%= flash[:notice] %></div> -->
+      <div id='notice'><%= flash[:notice] %></div>
     <% end %>
     <%= yield %>
     <!-- Bootstrap jquery plugins -->

@@ -11,6 +11,7 @@ require 'rspec'
 require 'capybara'
 require 'database_cleaner'
 require 'factory_girl'
+require_relative 'helpers/session'
 # require 'data_mapper_setup'
 
 ENV['RACK_ENV'] = 'test'
@@ -41,6 +42,8 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+
+  config.include SessionHelpers
 
   config.include FactoryGirl::Syntax::Methods
 
