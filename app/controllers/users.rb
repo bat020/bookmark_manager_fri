@@ -22,6 +22,22 @@ module BookmarkWrapper
         end
       end
 
+      get '/password_reset' do
+        erb :'password_reset/index'
+      end
+
+      post '/password_reset' do
+        user = User.first(email: params[:email])
+        user.password_token = 'xyz'
+        user.save
+        flash.now[:notice] = ['Check your emails']
+        erb :'password_reset/index'
+      end
+
+      get '/password_reset/:token' do
+        erb :'password_reset/new'
+      end
+
     end
 
   end

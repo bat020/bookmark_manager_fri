@@ -1,0 +1,6 @@
+<h1>Request password reset</h1>
+
+<form action='/password_reset' method='post'>
+  Email: <input name='email' type='text' value='<%= current_user.email %>' placeholder='email' >
+  <input type='submit' value="Reset password">
+</form>
