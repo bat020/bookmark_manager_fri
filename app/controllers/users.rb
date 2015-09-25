@@ -23,7 +23,6 @@ module BookmarkWrapper
       end
 
       get '/password_reset' do
-        p "FOUND ME"
         erb :'password_reset/index'
       end
 
@@ -35,9 +34,9 @@ module BookmarkWrapper
         erb :'password_reset/index'
       end
 
-      # get '/password_reset/:token' do
-      #   erb :'password_reset/new'
-      # end
+      get '/password_reset/:token' do
+        erb :'password_reset/new'
+      end
 
       post '/password_reset/:token' do
         @user = current_user

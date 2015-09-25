@@ -87,8 +87,27 @@ feature 'Password reset' do
     fill_in 'password_confirmation', with: 'apples'
     click_button 'Change password'
     expect(page).to have_content 'Your password has been updated'
+  end
+
+  scenario 'voiding password token' do
+    user = create :user
+    sign_in(user)
+    user.password_token = 'xyz'
+    visit "/password_reset/xyz"
+    fill_in 'password', with: 'apples'
+    fill_in 'password_confirmation', with: 'apples'
+    click_button 'Change password'
     user = User.first(email: user.email)
     expect(user.password_token).to be_nil
+  end
+
+  scenario 'lets user sign in with updated password' do
+    user = create :user
+    sign_in(user)
+    visit "/password_reset/xyz"
+    fill_in 'password', with: 'apples'
+    fill_in 'password_confirmation', with: 'apples'
+    click_button 'Change password'
     click_button 'Sign Out'
     user.password = 'apples'
     sign_in(user)
