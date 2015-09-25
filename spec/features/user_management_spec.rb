@@ -46,7 +46,7 @@ feature 'User signs out' do
   scenario 'while being signed in' do
     user = create :user
     sign_in(user)
-    click_button 'Sign Out'
+    click_button 'Sign out'
     expect(page).to have_content('Goodbye!')
     expect(page).not_to have_content("Welcome, #{user.email}")
   end
@@ -108,7 +108,7 @@ feature 'Password reset' do
     fill_in 'password', with: 'apples'
     fill_in 'password_confirmation', with: 'apples'
     click_button 'Change password'
-    click_button 'Sign Out'
+    click_button 'Sign out'
     user.password = 'apples'
     sign_in(user)
     expect(page).to have_content "Welcome, #{user.email}"

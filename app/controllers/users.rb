@@ -50,7 +50,7 @@ module BookmarkWrapper
           erb :'links/index'
         else
           flash.now[:errors] = @user.errors.full_messages.uniq
-          erb :'/password_reset/:token'
+          erb :'password_reset/index'
         end
       end
 

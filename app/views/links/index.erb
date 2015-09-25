@@ -1,19 +1,14 @@
-<!-- in /views/links/index.erb -->
-<body class="container">
-  <h1> Links </h1>
+<h1>Links</h1>
 
-    <ul id='links'>
-      <% @links.each do |link| %>
-        <li>
-          Title: <%= link.title %>
-          URL:   <%= link.url   %>
-        </li>
-      <% end %>
+<ul id='links'>
+  <% @links.each do |link| %>
+    <li>
+      Title: <%= link.title %>
+      URL:   <%= link.url   %>
+    </li>
+  <% end %>
+</ul>
 
-      <form action="/links/new">
-        <button>Add a link</button>
-      </form>
-
-    </ul>
-
-</body>
+<form action="/links/new">
+  <button>Add a link</button>
+</form>
