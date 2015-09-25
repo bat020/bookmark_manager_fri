@@ -11,19 +11,6 @@ gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'bcrypt'
 
-group :production do
-gem 'data_mapper'
-
-end
-
-
-group :development do
-  gem 'rspec'
-  gem 'capybara'
-
-
-end
-
 group :test do
   gem 'rspec'
   gem 'capybara'
