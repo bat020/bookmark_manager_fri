@@ -1,7 +1,7 @@
 feature 'Creating links' do
 
   scenario 'I can create a new link' do
-    visit 'new_link'
+    visit '/links/new'
     fill_in 'url', with: 'http://www.zombo.com/'
     fill_in 'title', with: 'This is Zombocom'
     click_button 'Add Link'

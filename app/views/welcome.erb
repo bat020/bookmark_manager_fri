@@ -1,5 +1,5 @@
 <% if current_user %>
-   Welcome, <%= current_user.email %>
+   <p>Welcome, <%= current_user.email %></p>
    <form method='post' action='/sessions'>
      <input type='hidden' name='_method' value='delete'>
      <button type='submit' value='Sign Out'>
