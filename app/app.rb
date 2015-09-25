@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/flash'
+require 'sinatra/partial'
 require_relative 'data_mapper_setup'
 
 class BookmarkManager < Sinatra::Base
@@ -7,6 +8,8 @@ class BookmarkManager < Sinatra::Base
   use Rack::MethodOverride
   enable :sessions
   register Sinatra::Flash
+  register Sinatra::Partial
+  set :partial_template_engine, :erb
   set :session_secret, 'super secret'
 
   get '/' do
