@@ -14,13 +14,13 @@
        Welcome, <%= current_user.email %>
        <form method='post' action='/sessions'>
          <input type='hidden' name='_method' value='delete'>
-         <input type='submit' value='Sign Out'>
+         <button type='submit' value='Sign Out'>
        </form>
      <% end %>
 
     <% if flash[:notice] %>
       <div id='notice'>
-        <%= flash[:notice] %>
+        <%= flash[:notice].first %>
       </div>
     <% end %>
 
@@ -31,7 +31,7 @@
           <li><%= error %></li>
         <% end %>
       </ul>
-      <div id='notice'><%= flash[:notice] %></div>
+      <!-- <div id='notice'><%= flash[:notice] %></div> -->
     <% end %>
     <%= yield %>
     <!-- Bootstrap jquery plugins -->

@@ -75,6 +75,9 @@ class BookmarkManager < Sinatra::Base
 
   delete '/sessions' do
     flash.now[:notice] = ['Goodbye!']
+    @user = User.new
+    session[:user_id] = nil
+    erb :'/sessions/new'
   end
 
   helpers do
